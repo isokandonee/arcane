@@ -45,6 +45,7 @@
                                     }
                                     elseif (isset($_GET['signup' == 'success'])) {
                                             echo '<p class="text-success">Signup Successful</p>';
+                                            header("Location: ../dashboard/index.php?error=successful");
                                     }
                                 ?>
                             <form class="" action="controller/index.php" method="POST" enctype="multipart/form-data">	
