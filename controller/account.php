@@ -10,7 +10,7 @@
     else{
         $id = $_SESSION['id'];
         $status = 1;
-        $insert = mysqli_query($conn,"INSERT INTO user.user_account (user_id,account_type_id,status_id,created_at)
+        $insert = mysqli_query($conn,"INSERT INTO user_account (user_id,account_type_id,status_id,created_at)
             values('$id','$ac_type','$status',current_date())");
 
         if (!$insert) {
