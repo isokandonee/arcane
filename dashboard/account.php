@@ -10,7 +10,7 @@ include "../include/header.php";
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-10 m-auto">            
+        <div class="col-sm-8 m-auto p-auto">            
             <section class="testimonial py-5" id="testimonial">
                 <div class="container pt-5">			
                     <div class="row">

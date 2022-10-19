@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-md-8 py-5 border">
                             <h4 class="pb-4 text-center">Please fill with your details</h4>
-                            <p>Default login: i@i.com, 123456789Do</p>
+                            <p>Default login: isokandone@gmail.com, 123456789Do</p>
                                 <?php 
                                     if (isset($_GET['error'])) {
                                         if ($_GET['error'] == "emptyfields") {

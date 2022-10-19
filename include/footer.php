@@ -1,5 +1,5 @@
 <footer class="footer mt-5 text-center">
-    &copy; <?php print date("Y"); ?>
+    <p><a href="https://github.com/isokandonee"> Mitchel Ogunniyi</a> &copy; <?php print date("Y"); ?> </p>
 </footer>
 
 </body>
