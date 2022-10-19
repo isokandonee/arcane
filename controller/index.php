@@ -40,8 +40,9 @@ if (isset($_POST['token'])) {
         }
                 else {
                     //inserting our values into db
-                    $hpassword = password_hash($password, PASSWORD_DEFAULT);
-                    $insert = mysqli_query($conn, "INSERT INTO user.user_tb (first_name,last_name,email,password,phone,created_at) 
+                    // $hpassword = password_hash($password, PASSWORD_DEFAULT);
+                    $hpassword = sha1($password);
+                    $insert = mysqli_query($conn, "INSERT INTO user_tb (first_name,last_name,email,password,phone,created_at) 
                     VALUES ('$firstname','$lastname','$email','$hpassword','$phone',current_date())");
                     if ($insert) {
                         header("Location: ../login.php?signup=success");

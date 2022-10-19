@@ -3,7 +3,7 @@
 if (isset($_POST['token'])) {
     require "connect.php";
     $email = $_POST['email'];
-    $pass = $_POST['password'];
+    $pass = sha1($_POST['password']);
     $password = '';
 
     // Check for empty fields
@@ -12,15 +12,16 @@ if (isset($_POST['token'])) {
         exit();
     }
     else {
-        $sql="SELECT * FROM user.user_tb WHERE email='$email'";
+        $sql="SELECT * FROM user_tb WHERE email='$email'";
         $result=mysqli_query($conn,$sql);
         $r = mysqli_fetch_assoc($result);
-        $password = password_verify($pass, $r['password']);
-        if ($password == false) {
-            header("Location: ../login.php?error=invaliddetails");
+        $db_pass = $r['password'];
+        // $password = password_verify($pass, $db_pass);
+        if ($pass != $db_pass) {
+            header("Location: ../login.php?error=invalidcredentials");
             exit();
         }
-        elseif ($password == true) {
+        elseif ($pass == $db_pass) {
             session_start();
             $_SESSION['email'] = $r['email'];
             $_SESSION['first_name'] = $r['first_name'];
