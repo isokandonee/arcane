@@ -31,7 +31,7 @@
     <meta name="viewport" content="width=device-width" />
 
     <!--     Font     -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css' />
 
 </head>
 <body>
