@@ -3,7 +3,7 @@ session_start();
 require "connect.php";
 if(isset($_POST['token'])){
     
-$id = $_SESSION['id'];
+$id = $_SESSION['user_id'];
 $ac = $_POST['ac_no'];
 $fetch = mysqli_query($conn,"SELECT * from user_tb full outer join user_account using (id) where account_number = '$ac'");
 $r = mysqli_fetch_array($fetch);

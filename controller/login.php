@@ -25,18 +25,13 @@ if (isset($_POST['token'])) {
                     $_SESSION['first_name'] = $r['first_name'];
                     $_SESSION['last_name'] = $r['last_name'];
                     $_SESSION['user_id'] = $r['id'];
-                    // $_SESSION['unhashed'] = password_verify($pass, $db_pass);
                     header("Location: ../dashboard/account.php?login=success");
-                    // exit();
-                    // break;
+                    exit();
                 } 
                 else {
-                    header("Location: ../login.php?error=invalidcredentials".$db_pass. "," . $_POST['password'] . strlen($db_pass));
-                    error_log($db_pass);
-                    error_log($pass);
+                    header("Location: ../login.php?error=invalidcredentials");
 
-                    // exit();
-                    // break;
+                    exit();
                 }
             // }
         }
