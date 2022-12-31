@@ -1,69 +1,60 @@
-<?php
 
-if (isset($_POST['token'])) {
-        require "connect.php";
+
+    <?php
+    // Connect to the database
+    require "connect.php";
+    
+    // Check if the form has been submitted
+    if (isset($_POST['token'])) {
+        // Get the form data
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $email = $_POST['email'];
         $password = $_POST['password'];
         $cpassword = $_POST['cpassword'];
         $phone = $_POST['phone'];
-
+    
+        // Validate the form data
         // Check for empty fields
-        if ( empty($firstname) || empty($lastname) || empty($email) || empty($password) || empty($cpassword) ) {
+        if (empty($firstname) || empty($lastname) || empty($email) || empty($password) || empty($cpassword)) {
             header("Location: ../index.php?error=emptyfields&firstname=".$firstname."lastname=".$lastname."mail=".$email);
-            exit();
+            exit;
         }
-
+    
         // Email validation
         elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             header("Location: ../index.php?error=invalidmail&firstname=".$firstname."lastname=".$lastname);
-            exit();
+            exit;
         }
         
         // First and Lastname validation
-        elseif (!preg_match('/^[a-zA-Z]*$/', $firstname) && !preg_match('/^[a-zA-Z]*$/',$lastname)) {
-            header("Location: ../index.php?error=incorrectdetails&mail=".$email);
-            exit();
-        }
-
-        // password validation
-        elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', $password)) {
+        // elseif (!preg_match('/^[a-zA-Z]*$/', $firstname) || !preg_match('/^[a-zA-Z]*$/',$lastname)) {
+        //     header("Location: ../index.php?error=incorrectdetails&mail=".$email);
+        //     exit;
+        // }
+       
+        // Password validation
+        elseif (!preg_match('/[a-zA-Z\d]{8,}$/', $password)) {
             header("Location: ../index.php?error=weakpassword&firstname=".$firstname."lastname=".$lastname."mail=".$email);
-            exit();
+            exit;
         }
-
+    
         // Check if password and confirm password match
         elseif ($cpassword !== $password) {
             header("Location: ../index.php?error=passwordsdonotmatch&firstname=".$firstname."lastname=".$lastname."mail=".$email);
-            exit();
+            exit;
         }
-                else {
-                    //inserting our values into db
-                    // $hpassword = password_hash($password, PASSWORD_DEFAULT);
-                    $hpassword = sha1($password);
-                    $insert = mysqli_query($conn, "INSERT INTO user_tb (first_name,last_name,email,password,phone,created_at) 
-                    VALUES ('$firstname','$lastname','$email','$hpassword','$phone',current_date())");
-                    if ($insert) {
-                        header("Location: ../login.php?signup=success");
-                        exit();
-                    }
-                    else {
-                        //Check for duplicate email
-                        $sql="SELECT * FROM user.user_tb WHERE email='$email'";
-                        $result=mysqli_query($conn,$sql);
-                        $r = mysqli_fetch_assoc($result);
-                        $em = $r['email'];
-                        while ($em == $email) {
-                        header("Location: ../index.php?error=emailaltaken&firstname=".$firstname."lastname=".$lastname);
-                        exit();
-                        }
-                    }
-                }
-        mysqli_close($conn);
-
-} else {
-    header("Location: ../index.php?error=notsuccessful");
-    exit();
+        else {
+            // Insert the user's data into the database
+            // Hash the password using password_hash() function
+            $hpassword = password_hash($password, PASSWORD_DEFAULT, $o);
+    
+            // Using prepared statement to insert the data safely
+            $stmt = mysqli_prepare($conn, "INSERT INTO user_tb (first_name, last_name, email, password, phone, created_at) VALUES (?, ?, ?, ?, ?, current_date())");
+            mysqli_stmt_bind_param($stmt, 'sssss', $firstname, $lastname, $email, $hpassword, $phone);
+            if (mysqli_stmt_execute($stmt)) {
+                header("Location: ../login.php?signup=success");
+                exit;
+            }
+        }
     }
-

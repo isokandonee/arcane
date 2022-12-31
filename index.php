@@ -19,35 +19,37 @@
                         </div>
                         <div class="col-md-8 py-5 border">
                             <h4 class="pb-4 text-center">Please fill with your details</h4>
-                            <p>Default login: isokandone@gmail.com, 123456789Do</p>
+                            <p>Default login: i@i.com, 123456789</p>
                                 <?php 
                                     if (isset($_GET['error'])) {
-                                        if ($_GET['error'] == "emptyfields") {
-                                            echo '<p class="text-danger">Fill in all fields</p>';
-                                        }
-                                        elseif ($_GET['error'] == "invalidmail") {
-                                            echo '<p class="text-danger">Email format not correct (you@domain.com)</p>';
-                                        }
-                                        elseif ($_GET['error'] == "incorrectdetails") {
-                                            echo '<p class="text-danger">Fill all fields correctly</p>';
-                                        }
-                                        elseif ($_GET['error'] == "weakpassword") {
-                                            echo '<p class="text-danger">Password must be greater than 8 characters and have capital letter</p>';
-                                        }
-                                        elseif ($_GET['error'] == "passwordsdonotmatch") {
-                                            echo '<p class="text-danger">Passwords do not match</p>';
-                                        }
-                                        if ($_GET['error'] == "emailtaken") {
-                                            echo '<p class="text-danger">Email has already ben taken</p>';
-                                        }
-                                        if ($_GET['error'] == "notsuccessful") {
-                                            echo '<p class="text-danger">Check your details and try again</p>';
+                                        switch ($_GET['error']) {
+                                            case "emptyfields":
+                                                echo '<p class="text-danger">Fill in all fields</p>';
+                                                break;
+                                            case "invalidmail":
+                                                echo '<p class="text-danger">Email format not correct (you@domain.com)</p>';
+                                                break;
+                                            case "incorrectdetails":
+                                                echo '<p class="text-danger">Fill all fields correctly</p>';
+                                                break;
+                                            case "weakpassword":
+                                                echo '<p class="text-danger">Password must be greater than 8 characters and have capital letter</p>';
+                                                break;
+                                            case "passwordsdonotmatch":
+                                                echo '<p class="text-danger">Passwords do not match</p>';
+                                                break;
+                                            case "emailtaken":
+                                                echo '<p class="text-danger">Email has already ben taken</p>';
+                                                break;
+                                            case "notsuccessful":
+                                                echo '<p class="text-danger">Check your details and try again</p>';
+                                                break;
                                         }
                                     }
-                                    elseif (isset($_GET['signup' == 'success'])) {
-                                            echo '<p class="text-success">Signup Successful</p>';
-                                            // header("Location: ../dashboard/index.php?error=successful");
+                                    elseif (isset($_GET['signup']) && $_GET['signup'] == 'success') {
+                                        echo '<p class="text-success">Signup Successful</p>';
                                     }
+                                    
                                 ?>
                             <form class="" action="controller/index.php" method="POST" enctype="multipart/form-data">	
                                 <input type="hidden" name="token" value="sdkajsdaksjdklasjdaklsdjalkjs938092qpwoalsdalsdasdasd">

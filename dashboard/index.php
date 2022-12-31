@@ -15,7 +15,8 @@
         <div class="card-columns">
             <div class="card bg-light shadow">
             <div class="card card-title">
-                <p class="card-header">Account Number</p>
+                <p class="card-header">Account Number</p><br>
+                <p hidden><?php $_SESSION['unhashed'];  ?></p>
             </div>
             <div class="card-body text-center">
                 <p class="card-text text-warning">Some text inside the first card</p>

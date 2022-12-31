@@ -5,7 +5,7 @@
 session_start();
 
 // Connect to the database
-require "connect.php";
+require_once "connect.php";
 
 // Check if the form has been submitted
 if(isset($_POST['token'])){
