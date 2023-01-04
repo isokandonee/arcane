@@ -15,7 +15,7 @@ include "../include/header.php";
             <section class="testimonial py-5" id="testimonial">
                 <div class="container pt-5">			
                     <div class="row">
-                        <div class="col-md-8 py-5 shadow border">
+                        <div class="col-md-12 py-5 shadow border">
                             <h4 class="pb-4 text-center">Create Account</h4>
                             <form class="" action="../controller/account.php" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="token" value="sdkajsdaksjdklasjdaklsdjalkjs938092qpwoalsdalsdasdasd">

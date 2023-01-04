@@ -50,7 +50,7 @@
             $hpassword = password_hash($password, PASSWORD_DEFAULT, $o);
     
             // Using prepared statement to insert the data safely
-            $stmt = mysqli_prepare($conn, "INSERT INTO user_tb (first_name, last_name, email, password, phone, created_at) VALUES (?, ?, ?, ?, ?, current_date())");
+            $stmt = mysqli_prepare($conn, "INSERT INTO user_tb (first_name, last_name, email, password, phone, created_at) VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP())");
             mysqli_stmt_bind_param($stmt, 'sssss', $firstname, $lastname, $email, $hpassword, $phone);
             if (mysqli_stmt_execute($stmt)) {
                 header("Location: ../login.php?signup=success");

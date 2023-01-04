@@ -14,9 +14,9 @@ include "../include/header.php";
             <section class="testimonial py-5" id="testimonial">
                 <div class="container pt-5">			
                     <div class="row">
-                        <div class="col-md-8 py-5 shadow border">
+                        <div class="col-md-12 py-5 shadow border">
                             <h4 class="pb-4 text-center">Transfer Form</h4>
-                            <form class="" action="../controller/withdraw.php" method="POST" enctype="multipart/form-data">
+                            <form class="" action="../controller/transfer.php" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="token" value="sdkajsdaksjdklasjdaklsdjalkjs938092qpwoalsdalsdasdasd">
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
@@ -25,7 +25,7 @@ include "../include/header.php";
                                         
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label for="amount">Amount to transfer</label>
+                                        <label for="amount">Amount to Transfer</label>
                                         <input required placeholder="Amount" type="number" name="amount" class="form-control">
                                     </div>
                                 </div>

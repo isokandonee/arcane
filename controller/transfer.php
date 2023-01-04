@@ -71,8 +71,3 @@ if(isset($_POST['token'])){
     header('location:../pages/dashboard.php');
     echo "<script>alert('Transfer successful!')</script>";
 }
-
-/**
- * Performs a fund transfer from one account to another.
- *
- * @param int $sourceId The ID

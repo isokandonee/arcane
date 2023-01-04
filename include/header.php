@@ -71,6 +71,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="../dashboard/withdraw.php">Withdraw</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../dashboard/transfer.php">Transfer</a>
+                                </li>
                                 ';
                             }
                         ?>

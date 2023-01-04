@@ -37,11 +37,11 @@ elseif ($ac == $acc) {
 }
 else {
         $insert = mysqli_query($conn,"insert into transaction (transaction_type_id,source_id,destination_id,amount,created_at)
-            values('$ttide','$id','$ide','$am',current_date())");
+            values('$ttide','$id','$ide','$am',CURRENT_TIMESTAMP())");
         $inserts = mysqli_query($conn,"insert into transaction (transaction_type_id,source_id,destination_id,amount,created_at)
-            values('$ttid','$ide','$id','$am',current_date())");
-        $update = mysqli_query($conn,"update user_account set balance = $bal, updated_at = current_date() where user_id = $id");
-        $updates = mysqli_query($conn,"update user_account set balance = $bala, updated_at = current_date() where user_id = $ide");
+            values('$ttid','$ide','$id','$am',CURRENT_TIMESTAMP())");
+        $update = mysqli_query($conn,"update user_account set balance = $bal, updated_at = CURRENT_TIMESTAMP() where user_id = $id");
+        $updates = mysqli_query($conn,"update user_account set balance = $bala, updated_at = CURRENT_TIMESTAMP() where user_id = $ide");
         header('location:../pages/dashboard.php');
         echo "<script>alert('Transfer successful!')</script>";
     
