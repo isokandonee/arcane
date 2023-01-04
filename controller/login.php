@@ -18,7 +18,6 @@ if (isset($_POST['token'])) {
             $result = mysqli_stmt_get_result($stmt);
             $r = mysqli_fetch_assoc($result);
             $db_pass = $r['password'];
-            $dpass = substr($db_pass, 0, 50);
             if (password_verify($pass,$db_pass)) {
                     session_start();
                     $_SESSION['email'] = $r['email'];
