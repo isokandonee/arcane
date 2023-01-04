@@ -22,9 +22,10 @@ include "../include/header.php";
                                     <div class="form-group col-md-12">
                                         <label for="account">Recipient Account No</label>
                                         <input required placeholder="Account number" type="number" name="account" class="form-control">
+                                        
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label for="amount">Amount to withdraw</label>
+                                        <label for="amount">Amount to transfer</label>
                                         <input required placeholder="Amount" type="number" name="amount" class="form-control">
                                     </div>
                                 </div>
